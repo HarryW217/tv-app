@@ -30,5 +30,5 @@ class Episode(db.Model):
     episode_id = db.Column(db.Integer, primary_key=True)
     episode_name = db.Column(db.String(70), index=True, unique=True)
     episode_date = db.Column(db.Date)
-    show_id = id.Column(db.Integer, db.ForeignKey('show.show_id'), nullable=False)
+    show_id = db.Column(db.Integer, db.ForeignKey('show.show_id'), nullable=False)
     
