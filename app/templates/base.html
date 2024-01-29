@@ -17,30 +17,38 @@
             </button>
             <div class="collapse navbar-collapse" id="mob-navbar">
                 <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+                    {% if current_user.is_anonymous %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our Services</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Actions</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Web designing</a></li>
-                            <li><a class="dropdown-item" href="#">Web Development</a></li>
-                            <li><a class="dropdown-item" href="#">SEO Analysis</a></li>
+                            <li><a class="dropdown-item" href="#">Log TV Show</a></li>
+                            <li><a class="dropdown-item" href="#">Log Episode</a></li>
                             <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="#">Explore More</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('logout')}}">Log Out</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact Us</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex">
+                    {% if current_user.is_anonymous %}
                     <input class="form-control me-2" type="text" placeholder="Username" />
                     <input class="form-control me-2" type="password" placeholder="Password" />
                     <button class="btn btn-warning" type="submit">Login</button>
+                    {% else %}
+                    {% endif %}
                 </form>
             </div>
         </div>
