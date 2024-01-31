@@ -37,6 +37,8 @@ def login():
         
         login_user(user)
         session.permanent = True
+        return redirect(url_for('index'))
+    return render_template('login.html', title="Sign In", form=form)
 
 @app.route('/logout')
 @login_required
