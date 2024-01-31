@@ -1,4 +1,4 @@
-from flask import render_template, url_for, redirect, flash
+from flask import render_template, url_for, redirect, flash, session
 from app import app, db
 from flask_login import login_user, logout_user, current_user, login_required, LoginManager
 from app.models import *
@@ -34,6 +34,9 @@ def login():
         if user is None or password != form_password:
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        
+        login_user(user)
+        session.permanent = True
 
 @app.route('/logout')
 @login_required
